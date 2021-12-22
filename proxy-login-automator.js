@@ -36,7 +36,7 @@ function main() {
     return console.error('when use as a PAC server, the local_host parameter must be a definite address');
   }
   console.log('Using parameters: ' + JSON.stringify(cfg, null, '  '));
-  cfg.buf_proxy_basic_auth = Buffer.from('Proxy-Authorization: Basic ' + Buffer.from(cfg.usr + ':' + cfg.pwd).toString('base64'));
+  cfg.buf_proxy_basic_auth = Buffer.from('Authorization: Basic ' + Buffer.from(cfg.usr + ':' + cfg.pwd).toString('base64'));
 
   if (cfg.as_pac_server) {
     createPacServer(cfg.local_host, cfg.local_port, cfg.remote_host, cfg.remote_port, cfg.buf_proxy_basic_auth, cfg.is_remote_https, cfg.ignore_https_cert, cfg.are_remotes_in_pac_https);
